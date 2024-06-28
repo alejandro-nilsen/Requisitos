@@ -1,0 +1,45 @@
+@startuml SecuenciaUsuarioPolleria
+
+actor Cliente
+participant "Interfaz de Usuario" as UI
+participant "Sistema de Pollería" as Sistema
+participant "Servicio de Pedidos" as Servicio
+participant "Servicio de Pagos" as Pagos
+
+Cliente -> UI: Ingresa para mirar la carta
+activate UI
+UI -> Sistema: Solicita menú disponible
+activate Sistema
+Sistema --> UI: Envía menú con opciones
+deactivate Sistema
+UI -> Cliente: Muestra menú
+deactivate UI
+
+Cliente -> UI: Escoge su pedido
+activate UI
+UI -> Servicio: Envía pedido seleccionado
+activate Servicio
+Servicio --> UI: Confirma recepción de pedido
+deactivate Servicio
+UI --> Cliente: Confirma pedido recibido
+deactivate UI
+
+Cliente -> UI: Ver estado de su pedido
+activate UI
+UI -> Servicio: Consulta estado del pedido
+activate Servicio
+Servicio --> UI: Envía estado actualizado
+deactivate Servicio
+UI --> Cliente: Muestra estado del pedido
+deactivate UI
+
+Cliente -> UI: Realiza el pago
+activate UI
+UI -> Pagos: Solicita realizar pago
+activate Pagos
+Pagos --> UI: Confirma recepción de pago
+deactivate Pagos
+UI --> Cliente: Confirma pago realizado
+deactivate UI
+
+@enduml

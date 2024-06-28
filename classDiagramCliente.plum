@@ -1,0 +1,10 @@
+@startuml
+class Cliente {
+    - nombre: String
+    + verMenu()
+    + realizarPedido()
+    + recibirNotificacion()
+}
+
+Cliente "1" -- "*" Pedido : realizar >
+@enduml

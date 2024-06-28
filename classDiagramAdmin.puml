@@ -1,0 +1,56 @@
+@startuml Admin
+class Administrador {
+    - nombre: String
+    - usuario: String
+    - contraseña: String
+    + gestionarInventario()
+    + gestionarUsuarios()
+    + generarReportes()
+    + verCalendario()
+}
+
+class Producto {
+    - id: int
+    - nombre: String
+    - cantidad: int
+    - precio: float
+    + registrarProducto()
+    + editarProducto()
+    + eliminarProducto()
+    + buscarProducto()
+    + alertarBajoStock()
+}
+
+class Usuario {
+    - nombre: String
+    - DNI: String
+    - celular: String
+    - usuario: String
+    - contraseña: String
+    + crearUsuario()
+    + editarUsuario()
+    + eliminarUsuario()
+    + asignarPrivilegios()
+}
+
+class Reporte {
+    - id: int
+    - fecha: Date
+    - tipo: String
+    + generarReporte()
+    + exportarPDF()
+    + exportarExcel()
+}
+
+class Calendario {
+    - eventos: List<Evento>
+    + verEventos()
+    + agregarEvento()
+    + eliminarEvento()
+}
+
+Administrador "1" -- "*" Producto : gestionar >
+Administrador "1" -- "*" Usuario : gestionar >
+Administrador "1" -- "*" Reporte : generar >
+Administrador "1" -- "*" Calendario : ver >
+@enduml

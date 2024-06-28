@@ -1,0 +1,35 @@
+@startuml SecuenciaMeseroPolleria
+
+actor Mesero
+participant "Interfaz de Usuario" as UI
+participant "Sistema de Pollería" as Sistema
+participant "Servicio de Pedidos" as Servicio
+
+Mesero -> UI: Ingresa al sistema
+activate UI
+UI -> Sistema: Autenticar usuario
+activate Sistema
+Sistema --> UI: Confirmar autenticación
+deactivate Sistema
+UI --> Mesero: Mostrar panel de control
+deactivate UI
+
+Mesero -> UI: Realizar pedido
+activate UI
+UI -> Servicio: Enviar pedido seleccionado
+activate Servicio
+Servicio --> UI: Confirmar recepción de pedido
+deactivate Servicio
+UI --> Mesero: Confirmar pedido recibido
+deactivate UI
+
+Mesero -> UI: Ver estado de pedido
+activate UI
+UI -> Servicio: Consultar estado del pedido
+activate Servicio
+Servicio --> UI: Enviar estado actualizado
+deactivate Servicio
+UI --> Mesero: Mostrar estado del pedido
+deactivate UI
+
+@enduml

@@ -1,0 +1,21 @@
+@startuml 
+class Mesero {
+    - nombre: String
+    - usuario: String
+    - contraseña: String
+    + realizarPedido()
+    + verEstadoPedido()
+}
+
+class Pedido {
+    - id: int
+    - fecha: Date
+    - estado: String
+    - productos: List<Producto>
+    + crearPedido()
+    + actualizarEstado()
+    + notificarEstado()
+}
+
+Mesero "1" -- "*" Pedido : realizar >
+@enduml

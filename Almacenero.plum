@@ -1,0 +1,35 @@
+@startuml SecuenciaAlmaceneroPolleria
+
+actor Almacenero
+participant "Interfaz de Usuario" as UI
+participant "Sistema de Pollería" as Sistema
+participant "Servicio de Inventario" as Inventario
+
+Almacenero -> UI: Ingresa al sistema
+activate UI
+UI -> Sistema: Autenticar usuario
+activate Sistema
+Sistema --> UI: Confirmar autenticación
+deactivate Sistema
+UI --> Almacenero: Mostrar panel de control
+deactivate UI
+
+Almacenero -> UI: Gestionar stock
+activate UI
+UI -> Inventario: Solicitar datos de inventario
+activate Inventario
+Inventario --> UI: Enviar datos de inventario
+deactivate Inventario
+UI -> Almacenero: Mostrar datos de inventario
+deactivate UI
+
+Almacenero -> UI: Actualizar stock
+activate UI
+UI -> Inventario: Enviar actualización de stock
+activate Inventario
+Inventario --> UI: Confirmar actualización de stock
+deactivate Inventario
+UI -> Almacenero: Confirmar actualización realizada
+deactivate UI
+
+@enduml

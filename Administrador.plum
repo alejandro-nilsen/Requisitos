@@ -1,0 +1,40 @@
+@startuml SecuenciaAdministradorPolleria
+
+actor Administrador
+participant "Interfaz de Usuario" as UI
+participant "Sistema de Pollería" as Sistema
+participant "Servicio de Reportes" as Reportes
+participant "Servicio de Calendario" as Calendario
+participant "Servicio de Inventario" as Inventario
+participant "Servicio de Usuarios" as Usuarios
+
+Administrador -> UI: Ingresa al sistema
+activate UI
+UI -> Sistema: Autenticar usuario
+activate Sistema
+Sistema --> UI: Confirmar autenticación
+deactivate Sistema
+UI --> Administrador: Mostrar panel de control
+deactivate UI
+
+Administrador -> UI: Gestionar inventario
+activate UI
+UI -> Inventario: Solicitar datos de inventario
+activate Inventario
+Inventario --> UI: Enviar datos de inventario
+deactivate Inventario
+UI -> Administrador: Mostrar datos de inventario
+deactivate UI
+
+Administrador -> UI: Gestionar usuarios
+activate UI
+UI -> Usuarios: Solicitar lista de usuarios
+activate Usuarios
+Usuarios --> UI: Enviar lista de usuarios
+deactivate Usuarios
+UI -> Administrador: Mostrar lista de usuarios
+deactivate UI
+
+Administrador -> UI: Ver reportes
+activate UI
+UI ->

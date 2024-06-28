@@ -1,0 +1,35 @@
+@startuml SecuenciaCocineroPolleria
+
+actor Cocinero
+participant "Interfaz de Usuario" as UI
+participant "Sistema de Pollería" as Sistema
+participant "Servicio de Pedidos" as Servicio
+
+Cocinero -> UI: Ingresa al sistema
+activate UI
+UI -> Sistema: Autenticar usuario
+activate Sistema
+Sistema --> UI: Confirmar autenticación
+deactivate Sistema
+UI --> Cocinero: Mostrar panel de control
+deactivate UI
+
+Cocinero -> UI: Ver pedidos
+activate UI
+UI -> Servicio: Solicitar lista de pedidos
+activate Servicio
+Servicio --> UI: Enviar lista de pedidos
+deactivate Servicio
+UI -> Cocinero: Mostrar lista de pedidos
+deactivate UI
+
+Cocinero -> UI: Actualizar estado de pedido
+activate UI
+UI -> Servicio: Enviar actualización de estado
+activate Servicio
+Servicio --> UI: Confirmar actualización de estado
+deactivate Servicio
+UI -> Cocinero: Confirmar estado actualizado
+deactivate UI
+
+@enduml

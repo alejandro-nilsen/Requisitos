@@ -1,0 +1,24 @@
+@startuml Almacenero
+class Almacenero {
+    - nombre: String
+    - usuario: String
+    - contraseña: String
+    + gestionarStock()
+    + recibirProducto()
+    + despacharProducto()
+}
+
+class Producto {
+    - id: int
+    - nombre: String
+    - cantidad: int
+    - precio: float
+    + registrarProducto()
+    + editarProducto()
+    + eliminarProducto()
+    + buscarProducto()
+    + alertarBajoStock()
+}
+
+Almacenero "1" -- "*" Producto : gestionar >
+@enduml
