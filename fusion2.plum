@@ -1,0 +1,136 @@
+@startuml
+class Administrador {
+    - nombre: String
+    - usuario: String
+    - contraseña: String
+    + gestionarInventario()
+    + gestionarUsuarios()
+    + generarReportes()
+    + verCalendario()
+    + gestionarPermisosAlmacenero()
+    + gestionarPermisosMesero()
+    + gestionarMenu()
+}
+
+class Almacenero {
+    - nombre: String
+    - usuario: String
+    - contraseña: String
+    + gestionarStock()
+    + recibirProducto()
+    + despacharProducto()
+}
+
+class Cliente {
+    - nombre: String
+    + verCarta()
+    + verEstadoPedido()
+}
+
+class Mesero {
+    - nombre: String
+    - usuario: String
+    - contraseña: String
+    + enviarPedidoCocina()
+    + verEstadoPedido()
+}
+
+class Cocina {
+    - nombre: String
+    + recibirPedido()
+    + prepararPedido()
+    + notificarPreparacion()
+}
+
+class Producto {
+    - id: int
+    - nombre: String
+    - cantidad: int
+    - precio: float
+    + gestionarProducto()
+}
+
+class Menu {
+    - platos: List<Plato>
+    + agregarPlato()
+    + eliminarPlato()
+    + actualizarDisponibilidad()
+}
+
+class Plato {
+    - nombre: String
+    - descripcion: String
+    - precio: float
+}
+
+class Carta {
+    - platosDisponibles: List<Plato>
+    + actualizarCarta()
+}
+
+class Usuario {
+    - nombre: String
+    - DNI: String
+    - celular: String
+    - usuario: String
+    - contraseña: String
+    + crearUsuario()
+    + editarUsuario()
+    + eliminarUsuario()
+    + asignarPrivilegios()
+}
+
+class Reporte {
+    - id: int
+    - fecha: Date
+    - tipo: String
+    + generarReporte()
+    + exportarPDF()
+    + exportarExcel()
+}
+
+class Calendario {
+    - eventos: List<Evento>
+    + verEventos()
+    + agregarEvento()
+    + eliminarEvento()
+}
+
+class Pedido {
+    - id: int
+    - fecha: Date
+    - estado: String
+    - productos: List<Producto>
+    + agregarProducto()
+    + actualizarEstado()
+    + notificarEstado()
+}
+
+class Evento {
+    - nombre: String
+    - fecha: Date
+    + obtenerDetalles()
+}
+
+Administrador "1" -- "*" Producto : gestionar >
+Administrador "1" -- "*" Usuario : gestionar >
+Administrador "1" -- "*" Reporte : generar >
+Administrador "1" -- "*" Calendario : ver >
+Administrador "1" -- "*" Almacenero : gestionarPermisosAlmacenero >
+Administrador "1" -- "*" Mesero : gestionarPermisosMesero >
+Administrador "1" -- "1" Menu : gestionarMenu >
+
+Almacenero "1" -- "*" Producto : gestionar >
+
+Calendario "1" -- "*" Evento : contiene >
+
+Cliente "1" -- "1" Carta : verCarta >
+Cliente "1" -- "*" Pedido : verEstado >
+
+Mesero "1" -- "*" Pedido : enviar >
+Cocina "1" -- "*" Pedido : recibir >
+Cocina "1" -- "*" Pedido : preparar >
+
+Menu "1" o-- "*" Plato : contiene >
+Carta "1" o-- "*" Plato : platosDisponibles >
+@enduml

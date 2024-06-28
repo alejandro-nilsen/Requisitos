@@ -1,0 +1,97 @@
+@startuml
+class Administrador {
+    - nombre: String
+    - usuario: String
+    - contraseña: String
+    + gestionarInventario()
+    + gestionarUsuarios()
+    + generarReportes()
+    + verCalendario()
+}
+
+class Almacenero {
+    - nombre: String
+    - usuario: String
+    - contraseña: String
+    + gestionarStock()
+    + recibirProducto()
+    + despacharProducto()
+}
+
+class Cliente {
+    - nombre: String
+    + verMenu()
+    + verEstadoPedido()
+}
+
+class Mesero {
+    - nombre: String
+    - usuario: String
+    - contraseña: String
+    + realizarPedido()
+    + verEstadoPedido()
+}
+
+class Producto {
+    - id: int
+    - nombre: String
+    - cantidad: int
+    - precio: float
+    + registrarProducto()
+    + editarProducto()
+    + eliminarProducto()
+    + buscarProducto()
+    + alertarBajoStock()
+}
+
+class Usuario {
+    - nombre: String
+    - DNI: String
+    - celular: String
+    - usuario: String
+    - contraseña: String
+    + crearUsuario()
+    + editarUsuario()
+    + eliminarUsuario()
+    + asignarPrivilegios()
+}
+
+class Reporte {
+    - id: int
+    - fecha: Date
+    - tipo: String
+    + generarReporte()
+    + exportarPDF()
+    + exportarExcel()
+}
+
+class Calendario {
+    - eventos: List<Evento>
+    + verEventos()
+    + agregarEvento()
+    + eliminarEvento()
+}
+
+class Pedido {
+    - id: int
+    - fecha: Date
+    - estado: String
+    - productos: List<Producto>
+    + crearPedido()
+    + actualizarEstado()
+    + notificarEstado()
+}
+
+Administrador "1" -- "*" Producto : gestionar >
+Administrador "1" -- "*" Usuario : gestionar >
+Administrador "1" -- "*" Reporte : generar >
+Administrador "1" -- "*" Calendario : ver >
+
+Almacenero "1" -- "*" Producto : gestionar >
+
+Cliente "1" -- "*" Pedido : verEstado >
+Cliente "1" -- "*" Producto : verMenu >
+
+Mesero "1" -- "*" Pedido : realizar >
+Mesero "1" -- "*" Pedido : verEstado >
+@enduml
