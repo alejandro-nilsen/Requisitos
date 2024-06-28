@@ -1,0 +1,116 @@
+@startuml
+left to right direction
+actor Cliente
+actor Mesero
+actor Administrador
+actor Almacenero
+actor Cocinero
+
+usecase "Ver menú" as UC1
+usecase "Escoger pedido" as UC2
+usecase "Confirmar pedido" as UC3
+usecase "Ver estado del pedido" as UC4
+usecase "Realizar pago" as UC5
+usecase "Recibir confirmación de pago" as UC6
+
+usecase "Realizar pedido para cliente" as UC7
+usecase "Ver estado del pedido de cliente" as UC8
+
+usecase "Gestionar inventario" as UC9
+usecase "Registrar producto" as UC10
+usecase "Editar producto" as UC11
+usecase "Eliminar producto" as UC12
+usecase "Buscar producto" as UC13
+usecase "Alertar bajo stock" as UC14
+
+usecase "Gestionar usuarios" as UC15
+usecase "Crear usuario" as UC16
+usecase "Editar usuario" as UC17
+usecase "Eliminar usuario" as UC18
+usecase "Asignar privilegios" as UC19
+
+usecase "Generar reportes" as UC20
+usecase "Generar reporte de ventas" as UC21
+usecase "Generar reporte de inventario" as UC22
+usecase "Exportar reporte a PDF" as UC23
+usecase "Exportar reporte a Excel" as UC24
+
+usecase "Ver calendario" as UC25
+usecase "Agregar evento al calendario" as UC26
+usecase "Eliminar evento del calendario" as UC27
+
+usecase "Gestionar stock" as UC28
+usecase "Recibir producto" as UC29
+usecase "Despachar producto" as UC30
+
+usecase "Ver pedidos" as UC31
+usecase "Actualizar estado del pedido" as UC32
+
+Cliente --> UC1
+Cliente --> UC2
+Cliente --> UC3
+Cliente --> UC4
+Cliente --> UC5
+Cliente --> UC6
+
+Mesero --> UC7
+Mesero --> UC8
+
+Administrador --> UC9
+Administrador --> UC10
+Administrador --> UC11
+Administrador --> UC12
+Administrador --> UC13
+Administrador --> UC14
+Administrador --> UC15
+Administrador --> UC16
+Administrador --> UC17
+Administrador --> UC18
+Administrador --> UC19
+Administrador --> UC20
+Administrador --> UC21
+Administrador --> UC22
+Administrador --> UC23
+Administrador --> UC24
+Administrador --> UC25
+Administrador --> UC26
+Administrador --> UC27
+
+Almacenero --> UC28
+Almacenero --> UC29
+Almacenero --> UC30
+
+Cocinero --> UC31
+Cocinero --> UC32
+
+UC2 --> UC1 : include
+UC3 --> UC2 : include
+UC5 --> UC4 : include
+UC6 --> UC5 : include
+
+UC7 --> UC2 : include
+UC8 --> UC4 : include
+
+UC9 --> UC10 : include
+UC9 --> UC11 : include
+UC9 --> UC12 : include
+UC9 --> UC13 : include
+UC9 --> UC14 : include
+
+UC15 --> UC16 : include
+UC15 --> UC17 : include
+UC15 --> UC18 : include
+UC15 --> UC19 : include
+
+UC20 --> UC21 : include
+UC20 --> UC22 : include
+UC20 --> UC23 : include
+UC20 --> UC24 : include
+
+UC25 --> UC26 : include
+UC25 --> UC27 : include
+
+UC28 --> UC29 : include
+UC28 --> UC30 : include
+
+@enduml

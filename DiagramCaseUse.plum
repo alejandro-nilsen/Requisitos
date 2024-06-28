@@ -1,0 +1,42 @@
+@startuml
+left to right direction
+actor Cliente
+actor Mesero
+actor Administrador
+actor Almacenero
+actor Cocinero
+
+usecase "Ver menú" as UC1
+usecase "Realizar pedido" as UC2
+usecase "Ver estado del pedido" as UC3
+usecase "Realizar pago" as UC4
+
+usecase "Gestionar inventario" as UC5
+usecase "Gestionar usuarios" as UC6
+usecase "Generar reportes" as UC7
+usecase "Ver calendario" as UC8
+
+usecase "Gestionar stock" as UC9
+
+usecase "Ver pedidos" as UC10
+usecase "Actualizar estado del pedido" as UC11
+
+Cliente --> UC1
+Cliente --> UC2
+Cliente --> UC3
+Cliente --> UC4
+
+Mesero --> UC2
+Mesero --> UC3
+
+Administrador --> UC5
+Administrador --> UC6
+Administrador --> UC7
+Administrador --> UC8
+
+Almacenero --> UC9
+
+Cocinero --> UC10
+Cocinero --> UC11
+
+@enduml
